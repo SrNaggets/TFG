@@ -1,7 +1,6 @@
 import json
 from sentence_transformers import SentenceTransformer
 import chromadb
-from chromadb.config import Settings
 
 # 1. Cargar los chunks desde el archivo JSON
 with open("chunks.json", "r", encoding="utf-8") as f:
@@ -13,11 +12,8 @@ print(f"✅ Cargados {len(chunks)} chunks desde 'chunks.json'")
 modelo = SentenceTransformer("all-MiniLM-L6-v2")
 print("✅ Modelo de embeddings cargado")
 
-# 3. Configurar la base de datos ChromaDB
-chroma_client = chromadb.Client(Settings(
-    persist_directory="chroma_db",  # Carpeta donde se guarda la base
-    chroma_db_impl="duckdb+parquet"
-))
+# 3. Crear cliente persistente de ChromaDB (nuevo método)
+chroma_client = chromadb.PersistentClient(path="chroma_db")
 
 # 4. Crear o acceder a una colección en Chroma
 coleccion = chroma_client.get_or_create_collection(name="vinos_jerez")
@@ -41,3 +37,4 @@ coleccion.add(
 )
 
 print(f"✅ {len(documentos)} chunks indexados correctamente en la colección 'vinos_jerez'")
+
