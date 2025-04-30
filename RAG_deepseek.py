@@ -33,7 +33,8 @@ fuentes = resultados["metadatas"][0]
 
 # 5. Crear el contexto para la IA
 contexto = "\n\n".join(chunks)
-prompt = f"""Contesta a la siguiente pregunta usando solo la información del contexto:
+prompt = f"""Eres un experto en historia del vino de Jerez. No añadas introducciones ni repitas la pregunta. Ve directo a la respuesta.  Responde únicamente con la información del contexto proporcionado. 
+No inventes datos ni asumas hechos. Si la información no está expresamente en el contexto, indica que no puedes responder con certeza.
 
 ### Contexto:
 {contexto}
