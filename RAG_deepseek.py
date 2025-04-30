@@ -4,7 +4,7 @@ import requests
 
 # CONFIGURACIÓN
 NUM_CHUNKS = 3
-NOMBRE_MODELO = "deepseek-coder:6.7b"
+NOMBRE_MODELO = "deepseek-r1:14b"
 BASE_VECTORIAL = "chroma_db"
 COLECCION = "vinos_jerez"
 
