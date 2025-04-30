@@ -1,4 +1,5 @@
 import os
+import json
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Configuración del splitter
@@ -42,3 +43,10 @@ chunks_generados = chunkear_documentos(documentos)
 print(f"Total de chunks generados: {len(chunks_generados)}")
 print("Ejemplo:")
 print(chunks_generados[0])
+
+# Guardar los chunks en un archivo JSON
+with open("chunks.json", "w", encoding="utf-8") as f:
+    json.dump(chunks_generados, f, ensure_ascii=False, indent=2)
+
+print("✅ Chunks guardados en 'chunks.json'")
+
